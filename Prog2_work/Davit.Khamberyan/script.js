@@ -76,28 +76,28 @@ function setup() {
 function Boom(matrixsize) {
     var x = Math.floor(random(matrixsize))
     var y = Math.floor(random(matrixsize))
-    
-    if(x == 0 || y == 0|| x == matrixsize-1 || y == matrixsize-1 || x == 1 || y == 1|| x == matrixsize-2 || y == matrixsize-2){
-       
+
+    if (x == 0 || y == 0 || x == matrixsize - 1 || y == matrixsize - 1 || x == 1 || y == 1 || x == matrixsize - 2 || y == matrixsize - 2) {
+
     }
-    else{
+    else {
         new Bomb(x, y)
-        
+
     }
-    
-    
+
+
 }
 
-function bomb_eater_spawn(ms){
+function bomb_eater_spawn(ms) {
     var x = Math.floor(random(ms))
     var y = Math.floor(random(ms))
 
     if (matrix[y][x] == 7) {
-        new Bomb_eater(x,y)
+        new Bomb_eater(x, y)
 
     }
-    else{
-        
+    else {
+
     }
 }
 
@@ -129,10 +129,10 @@ function draw() {
             }
             else if (matrix[y][x] == 7) {
                 fill("#a25d5d");
-            } 
+            }
             else if (matrix[y][x] == 8) {
                 fill("#bbff00");
-            } 
+            }
 
 
             rect(x * side, y * side, side, side);
@@ -149,15 +149,15 @@ function draw() {
     for (var g in eater_eaters) {
         eater_eaters[g].eat()
     }
-    if(l == 1){
+    if (l == 1) {
         Boom(matrix.length)
         l = 0
         for (var g in bombs) {
             bombs[g].booom()
         }
     }
-    else{
-        
+    else {
+
         l++
     }
     if (l2 == 10) {
@@ -167,7 +167,7 @@ function draw() {
             bomb_eaters[g].eat()
         }
     }
-    else{
+    else {
         l2++
     }
 
