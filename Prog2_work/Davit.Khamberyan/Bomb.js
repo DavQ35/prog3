@@ -80,7 +80,7 @@ class Bomb {
             this.super_boom()
         }
     }
-    //erb pajtuma, erevi inch vor grass_eater-ner sharjvum en u dra hamar voch bolorn en nerkvum 
+  
 
     super_boom() {
         var cords = this.chooseCell()

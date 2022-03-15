@@ -3,6 +3,7 @@ class Eater_eater extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         matrix[this.y][this.x] = 3
+        this.energy = 15;
         eater_eaters.push(this)
 
     }
@@ -31,7 +32,7 @@ class Eater_eater extends LivingCreature {
 
             this.energy += 5
 
-            if (this.energy >= 55) {
+            if (this.energy >= 30) {
                 this.mul()
             }
 
@@ -51,7 +52,7 @@ class Eater_eater extends LivingCreature {
             var res = new Eater_eater(x, y)
             matrix[y][x] == 3
             grass_eaters.push(res)
-            this.energy = 10
+            this.energy = 15
         }
     }
 

@@ -15,6 +15,7 @@ class LivingCreature {
         ];
 
     }
+
     getNewDirections() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -29,6 +30,17 @@ class LivingCreature {
     }
 
     chooseCell(ch) {
+        this.getNewDirections()
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];

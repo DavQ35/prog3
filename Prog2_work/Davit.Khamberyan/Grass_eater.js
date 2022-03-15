@@ -3,6 +3,7 @@ class Grass_eater extends LivingCreature {
     constructor(x, y) {
         super(x, y);
         matrix[this.y][this.x] = 2
+         this.energy = 10;
         grass_eaters.push(this)
     }
     eat() {
@@ -14,7 +15,7 @@ class Grass_eater extends LivingCreature {
 
             var x = newcell[0]
             var y = newcell[1]
-
+            
             for (var i in grassArr) {
                 if (x == grassArr[i].x && y == grassArr[i].y) {
                     grassArr.splice(i, 1)
@@ -31,7 +32,7 @@ class Grass_eater extends LivingCreature {
             this.energy += 5
             this.multiplay = 0
 
-            if (this.energy >= 25) {
+            if (this.energy >= 35) {
                 this.mul()
             }
 

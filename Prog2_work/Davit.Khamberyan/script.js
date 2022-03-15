@@ -45,7 +45,7 @@ function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
 // new Grass_eater(2,3)
 
 function setup() {
-    frameRate(5)
+    frameRate(7)
     //generator(5, 0, 0, 0)
     generator(25, 50, 50, 5)
     createCanvas(matrix[0].length * side, matrix.length * side);
