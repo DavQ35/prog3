@@ -1,5 +1,10 @@
-var matrix = [];
+var Grass = require('Grass.js');
+var Grass_eater = require('Grass_eater.js');
+var Grass_eater_eater = require('Grass_eater_eater.js');
+var Bomb = require('Bomb.js');
+var Bomb_eater = require('Bomb_eater.js');
 
+var matrix = [];
 var side = 20
 var grassArr = []
 var grass_eaters = []
@@ -35,18 +40,8 @@ function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
 
 }
 
-// new Grass_eater(1,2)
-// new Grass_eater(1,1)
-// new Grass_eater(2,1)
-// new Grass_eater(1,3)
-// new Grass_eater(3,1)
-// new Grass_eater(3,3)
-// new Grass_eater(3,2)
-// new Grass_eater(2,3)
-
 function setup() {
     frameRate(7)
-    //generator(5, 0, 0, 0)
     generator(25, 50, 50, 5)
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
@@ -55,19 +50,19 @@ function setup() {
 
             if (matrix[y][x] == 1) {
                 fill("green");
-                new Grass(x, y)
+                new Grass.Grass(x, y)
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
             }
             else if (matrix[y][x] == 2) {
                 fill("orange");
-                new Grass_eater(x, y)
+                new Grass_eater.Grass_eater(x, y)
 
             }
             else if (matrix[y][x] == 3) {
                 fill("red");
-                new Eater_eater(x, y)
+                new Grass_eater_eater.Eater_eater(x, y)
             }
         }
     }
@@ -81,7 +76,7 @@ function Boom(matrixsize) {
 
     }
     else {
-        new Bomb(x, y)
+        new Bomb.Bomb(x, y)
 
     }
 
@@ -93,7 +88,7 @@ function bomb_eater_spawn(ms) {
     var y = Math.floor(random(ms))
 
     if (matrix[y][x] == 7) {
-        new Bomb_eater(x, y)
+        new Bomb_eater.Bomb_eater(x, y)
 
     }
     else {

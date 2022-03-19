@@ -1,4 +1,5 @@
-class Bomb_eater extends LivingCreature {
+var live = require('starter.js');
+module.exports = class Bomb_eater extends live {
     constructor(x, y) {
         super(x, y)
         matrix[this.y][this.x] = 8
