@@ -1,4 +1,4 @@
-var live = require('starter.js');
+var live = require('./starter');
 module.exports = class Grass extends live {
 
     constructor(x, y) {
@@ -8,7 +8,7 @@ module.exports = class Grass extends live {
     }
 
     mul() {
-        const newcell = random(this.chooseCell(0))
+        const newcell = Math.random(this.chooseCell(0))
 
         if (newcell) {
             var x = newcell[0]

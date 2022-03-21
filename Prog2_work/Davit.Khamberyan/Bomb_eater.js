@@ -1,4 +1,4 @@
-var live = require('starter.js');
+var live = require('./starter');
 module.exports = class Bomb_eater extends live {
     constructor(x, y) {
         super(x, y)
@@ -8,7 +8,7 @@ module.exports = class Bomb_eater extends live {
 
 
     eat() {
-        var cords = random(this.chooseCell(7))
+        var cords = Math.random(this.chooseCell(7))
 
         if (cords) {
             var x = cords[0]

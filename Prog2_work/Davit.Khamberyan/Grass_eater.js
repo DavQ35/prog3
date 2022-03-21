@@ -1,4 +1,4 @@
-var live = require('starter.js');
+var live = require('./starter');
 module.exports = class Grass_eater extends live {
 
     constructor(x, y) {
@@ -9,7 +9,7 @@ module.exports = class Grass_eater extends live {
     }
     eat() {
 
-        const newcell = random(this.chooseCell(1))
+        const newcell = Math.random(this.chooseCell(1))
 
 
         if (newcell) {
@@ -46,7 +46,7 @@ module.exports = class Grass_eater extends live {
     }
 
     mul() {
-        var newcell = random(this.chooseCell(0))
+        var newcell = Math.random(this.chooseCell(0))
         if (newcell) {
             console.log()
             var x = newcell[0]
@@ -60,7 +60,7 @@ module.exports = class Grass_eater extends live {
 
     move() {
 
-        var newcell = random(this.chooseCell(0))
+        var newcell = Math.random(this.chooseCell(0))
 
         if (newcell) {
             var x = newcell[0]
