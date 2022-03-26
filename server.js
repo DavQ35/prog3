@@ -2,8 +2,6 @@ var express = require("express");
 var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io")(server);
-
-
 var fs = require("fs");
 
 app.use(express.static("."));
@@ -20,7 +18,6 @@ var Bomb = require('./Prog2_work/Davit.Khamberyan/Bomb');
 var Bomb_eater = require('./Prog2_work/Davit.Khamberyan/Bomb_eater');
 
 var matrix = [];
-var side = 20
 var grassArr = []
 var grass_eaters = []
 var eater_eaters = []
@@ -57,7 +54,7 @@ function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
 
 generator(25, 50, 50, 5)
 
-socket.emit('send matrix', matrix);
+io.sockets.emit('send matrix', matrix);
 
 function Boom(matrixsize) {
    var x = Math.floor(Math.random(matrixsize))
@@ -67,7 +64,7 @@ function Boom(matrixsize) {
 
    }
    else {
-       new Bomb.Bomb(x, y)
+       new Bomb(x, y)
 
    }
 
@@ -79,7 +76,7 @@ function bomb_eater_spawn(ms) {
    var y = Math.floor(random(ms))
 
    if (matrix[y][x] == 7) {
-       new Bomb_eater.Bomb_eater(x, y)
+       new Bomb_eater(x, y)
 
    }
    else {
