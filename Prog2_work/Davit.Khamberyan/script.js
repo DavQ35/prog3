@@ -4,14 +4,11 @@ var side = 20;
 
 function setup() {
     frameRate(7) 
-    //createCanvas(matrix[0].length * side, matrix.length * side);
     createCanvas(25 * side, 25 * side)
     background('#acacac');
- 
 }
 
 function nkarel(matrix) {
-    console.log(matrix);
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -47,11 +44,8 @@ function nkarel(matrix) {
             rect(x * side, y * side, side, side);
         }
     }
-
-
-
-
 }
+
 
 socket.on('send matrix', nkarel);
 

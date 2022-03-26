@@ -1,5 +1,5 @@
-var live = require('./starter');
-module.exports = class Eater_eater extends live {
+var LivingCreature = require('./starter');
+module.exports = class Eater_eater extends LivingCreature {
 
     constructor(x, y) {
         super(x, y);
@@ -18,6 +18,7 @@ module.exports = class Eater_eater extends live {
         if (newcell) {
             var x = newcell[0]
             var y = newcell[1]
+        
 
             for (var i in grass_eaters) {
                 if (x == grass_eaters[i].x && y == grass_eaters[i].y) {

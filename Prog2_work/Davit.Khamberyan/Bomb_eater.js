@@ -1,5 +1,5 @@
-var live = require('./starter');
-module.exports = class Bomb_eater extends live {
+var LivingCreature = require('./starter');
+module.exports = class Bomb_eater extends LivingCreature {
     constructor(x, y) {
         super(x, y)
         matrix[this.y][this.x] = 8
