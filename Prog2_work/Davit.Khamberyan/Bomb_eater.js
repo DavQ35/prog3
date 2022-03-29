@@ -8,7 +8,7 @@ module.exports = class Bomb_eater extends LivingCreature {
 
 
     eat() {
-        var cords = Math.random(this.chooseCell(7))
+        var cords = Math.random() *this.chooseCell(7)
 
         if (cords) {
             var x = cords[0]

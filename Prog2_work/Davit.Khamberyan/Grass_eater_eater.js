@@ -13,13 +13,12 @@ module.exports = class Eater_eater extends LivingCreature {
 
     eat() {
 
-        var newcell = Math.random(this.chooseCell(2))
+        var newcell = this.chooseCell(2);
 
         if (newcell) {
             var x = newcell[0]
             var y = newcell[1]
         
-
             for (var i in grass_eaters) {
                 if (x == grass_eaters[i].x && y == grass_eaters[i].y) {
                     grass_eaters.splice(i, 1)
@@ -42,12 +41,12 @@ module.exports = class Eater_eater extends LivingCreature {
         else {
             this.move()
         }
-
     }
+    
 
     mul() {
-        var newcell = Math.random(this.chooseCell(0))
-
+        var newcell = this.chooseCell(0);
+        
         if (newcell) {
             var x = newcell[0]
             var y = newcell[1]
@@ -58,9 +57,10 @@ module.exports = class Eater_eater extends LivingCreature {
         }
     }
 
-    move() {
-        var newcell = Math.random(this.chooseCell(0))
 
+    move() {
+        var newcell = this.chooseCell(0);
+    
         if (newcell) {
             var x = newcell[0]
             var y = newcell[1]
@@ -83,6 +83,7 @@ module.exports = class Eater_eater extends LivingCreature {
 
     }
 
+
     die() {
         for (var i in eater_eaters) {
             if (this.x == eater_eaters[i].x && this.y == eater_eaters[i].y) {
@@ -94,7 +95,7 @@ module.exports = class Eater_eater extends LivingCreature {
     }
 
 
-
+ 
 
 }
 

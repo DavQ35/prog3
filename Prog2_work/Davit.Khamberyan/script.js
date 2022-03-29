@@ -3,12 +3,13 @@ var side = 20;
 
 
 function setup() {
-    frameRate(7) 
-    createCanvas(25 * side, 25 * side)
+    
+    createCanvas(50 * side, 50 * side)
     background('#acacac');
-}
+} 
 
 function nkarel(matrix) {
+    
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 

@@ -5,28 +5,23 @@ module.exports = class Grass extends LivingCreature {
         super(x, y);
         matrix[this.y][this.x] = 1
         grassArr.push(this);
+        super.multiplay = 4;
     }
-
+ 
     mul() {
-        const newcell = Math.random(this.chooseCell(0))
-
-        if (newcell) {
+        if(this.multiplay == 0){
+        let newcell = this.chooseCell(0);
+        if (newcell) { 
             var x = newcell[0]
             var y = newcell[1]
-            if (matrix[y][x] == 7) {
-                for (var i in grassArr) {
-                    if (this.x == grassArr[i].x && this.y == grassArr[i].y) {
-                        grassArr.splice(i, 1)
-                    }
-                }
-
-            }
-            else {
-                const newGrass = new Grass(x, y)
-                grassArr.push(newGrass)
-                this.multiplay = 0
-                matrix[y][x] = 1
+            const newGrass = new Grass(x, y)
+            grassArr.push(newGrass)
+            this.multiplay = 4 
+            matrix[y][x] = 1
             }
         }
-    }
-}
+        else{this.multiplay--}
+    } 
+} 
+ 
+    

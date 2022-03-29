@@ -10,7 +10,7 @@ app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3007);
+server.listen(3005);
 
 var Grass = require('./Prog2_work/Davit.Khamberyan/Grass');
 var Grass_eater = require('./Prog2_work/Davit.Khamberyan/Grass_eater');
@@ -36,28 +36,29 @@ function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
        }
    }
    for (let i = 0; i < grasscount; i++) {
-       var x = Math.floor(Math.random(matrixsize))
-       var y = Math.floor(Math.random(matrixsize))
+       var x = Math.floor(Math.random()*matrixsize)
+       var y = Math.floor(Math.random()*matrixsize)
        matrix[y][x] = 1
    }
    for (let i = 0; i < grasseatercount; i++) {
-       var x = Math.floor(Math.random(matrixsize))
-       var y = Math.floor(Math.random(matrixsize))
+       var x = Math.floor(Math.random()*matrixsize)
+       var y = Math.floor(Math.random()*matrixsize)
        matrix[y][x] = 2
    }
    for (let i = 0; i < grasseatercountaa; i++) {
-       var x = Math.floor(Math.random(matrixsize))
-       var y = Math.floor(Math.random(matrixsize))
+       var x = Math.floor(Math.random()*matrixsize)
+       var y = Math.floor(Math.random()*matrixsize)
        matrix[y][x] = 3
    }
 
 }
 
-generator(25, 50, 50, 5)
+
+
 
 io.sockets.emit('send matrix', matrix);
 
-function createObj(matrix){
+function createObj(){
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -81,7 +82,7 @@ function createObj(matrix){
     }
     io.sockets.emit('send matrix', matrix);
 }
-createObj(matrix);
+
 
 function game(){
     for (var g in grassArr) {
@@ -104,20 +105,20 @@ function game(){
  
        l++
    }
-   if (l2 == 10) {
-       bomb_eater_spawn(matrix.length)
-       l2 = 0
-       for (var g in bomb_eaters) {
-           bomb_eaters[g].eat()
-       }
-   }
-   else {
-       l2++
-   }
+//    if (l2 == 10) {
+//        bomb_eater_spawn(matrix.length)
+//        l2 = 0
+//        for (var g in bomb_eaters) {
+//            bomb_eaters[g].eat()
+//        }
+//    }
+//    else {
+//        l2++
+//    }
    io.sockets.emit('send matrix', matrix);
  }
- 
- setInterval(game, 1000);
+  
+ setInterval(game, 150);  
 
 function Boom(matrixsize) {
    var x = Math.floor(Math.random(matrixsize))
@@ -134,18 +135,23 @@ function Boom(matrixsize) {
    io.sockets.emit('send matrix', matrix);
 }
 
-function bomb_eater_spawn(ms) {
-   var x = Math.floor(random(ms))
-   var y = Math.floor(random(ms))
+// function bomb_eater_spawn(ms) {
+//    var x = Math.floor(Math.random()*ms)
+//    var y = Math.floor(Math.random*ms)
 
-   if (matrix[y][x] == 7) {
-       new Bomb_eater(x, y)
-       io.sockets.emit('send matrix', matrix);
-   }
-   else {
+//    if (matrix[y][x] == 7) {
+//        new Bomb_eater(x, y)
+//        io.sockets.emit('send matrix', matrix);
+//    }
+//    else {
 
-   }
-}
+//    }
+// }
+
+io.on("connection", function(socket){
+    createObj();
+    generator(50, 50, 50, 5)
+})
 
 
 
