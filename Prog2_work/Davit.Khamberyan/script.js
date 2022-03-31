@@ -43,13 +43,43 @@ function nkarel(matrix) {
 
 
             rect(x * side, y * side, side, side);
+            
+        }
+    }
+
+}
+
+//seasons
+socket.on("season", SEASONSSS);
+
+function SEASONSSS(season){
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+
+            if (matrix[y][x] == 1) {
+                fill(season);
+            }
         }
     }
 }
-
-
+//seasons
 socket.on('send matrix', nkarel);
 
+function kill() {
+    socket.emit("kill")
+}
+function addGrass() {
+    socket.emit("add grass")
+}
+function addGrassEater() {
+    socket.emit("add grassEater")
+}
+function addEaterEater() {
+    socket.emit("add EaterEater")
+}
+function addbomb() {
+    socket.emit("add bomb")
+}
 
 
 

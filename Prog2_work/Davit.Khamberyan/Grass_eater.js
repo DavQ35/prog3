@@ -6,14 +6,14 @@ module.exports = class Grass_eater extends LivingCreature {
         matrix[this.y][this.x] = 2
          this.energy = 10;
         grass_eaters.push(this)
-        super.multiplay = 10;
+        super.multiplay = 5;
     }
     eat() {
      
        var newcell = this.chooseCell(1);           
        
        if (newcell) {
-
+            if(this.multiplay == 5){
             var x = newcell[0]
             var y = newcell[1]
             
@@ -31,8 +31,10 @@ module.exports = class Grass_eater extends LivingCreature {
             this.y = y
 
             this.energy += 5
+            this.multiplay = 5;
 
-
+            }
+            else{this.multiplay++}
             if (this.energy >= 35) {
                 this.mul()
             }
@@ -75,7 +77,7 @@ module.exports = class Grass_eater extends LivingCreature {
             }
         }
         else {
-            this.energy -= 2
+            this.energy -= 5
         }
         if (this.energy <= 0) {
             this.die()
