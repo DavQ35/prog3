@@ -10,7 +10,7 @@ app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3005);
+server.listen(3007);
 
 var Grass = require('./Prog2_work/Davit.Khamberyan/Grass');
 var Grass_eater = require('./Prog2_work/Davit.Khamberyan/Grass_eater');
@@ -26,6 +26,7 @@ bombs = []
 bomb_eaters = []
 var l = 0
 var l2 = 0
+var exav = false;
 
 function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
 
@@ -50,7 +51,7 @@ function generator(matrixsize, grasscount, grasseatercount, grasseatercountaa) {
        var y = Math.floor(Math.random()*matrixsize)
        matrix[y][x] = 3
    }
-
+   exav = true;
 }
 
 
@@ -163,6 +164,7 @@ function game(){
  
        l++
    }
+   if(exav == true){
    if (l2 == 10) {
        bomb_eater_spawn(matrix.length)
        l2 = 0
@@ -173,6 +175,7 @@ function game(){
    else {
        l2++
    }
+}
    io.sockets.emit('send matrix', matrix);
  }
   
@@ -206,42 +209,13 @@ function bomb_eater_spawn(ms) {
  
 }  
 
-//seasons update
+var statistics = {};
 
-var season = "white";
-var timer = 10;
-// var winter = "white";
-// var summer = "green";
-// var autumn = "orange";
-
-function seasons(){
-    if(season == "white"){
-      io.sockets.emit('season', season);
-      if(timer == 0){
-      season = "green";
-      timer = 10;
-      } 
-      else{timer--}
-    }
-    else if(season == "green"){
-      io.sockets.emit('season', season);
-      if(timer == 0){
-        season = "orange";
-        timer = 10;
-        } 
-        else{timer--}  
-    }
-    else if(season == "orange"){
-      io.sockets.emit('season', season);
-      if(timer == 0){
-        season = "white";
-        timer = 10;
-        } 
-        else{timer--} 
-    } 
-}
-
-setInterval(seasons, 100)
-
-
-
+setInterval(function() {
+    statistics.grass = grassArr.length;
+    statistics.grass_eater = grass_eaters.length;
+    statistics.eater_eater = eater_eaters.length;
+    fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
+        console.log("send")
+    })
+},1000)

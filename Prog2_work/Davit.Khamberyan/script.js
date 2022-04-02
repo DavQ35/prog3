@@ -1,15 +1,14 @@
 var socket = io();
 var side = 20;
 
-
 function setup() {
-    
+
     createCanvas(50 * side, 50 * side)
     background('#acacac');
-} 
+}
 
 function nkarel(matrix) {
-    
+
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -43,26 +42,11 @@ function nkarel(matrix) {
 
 
             rect(x * side, y * side, side, side);
-            
-        }
-    }
 
-}
-
-//seasons
-socket.on("season", SEASONSSS);
-
-function SEASONSSS(season){
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-
-            if (matrix[y][x] == 1) {
-                fill(season);
-            }
         }
     }
 }
-//seasons
+
 socket.on('send matrix', nkarel);
 
 function kill() {
